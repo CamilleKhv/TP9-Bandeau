@@ -14,6 +14,6 @@ public class Rotation extends Effet {
         Bd.setMessage("On tourne");
         double Anglerotation = Bd.getRotation();
         Bd.setRotation(Rotation+Anglerotation);
-        Bd.sleep(200);
+        Bd.sleep(35);
     }
 }

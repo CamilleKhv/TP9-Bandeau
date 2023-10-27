@@ -25,6 +25,8 @@ public class ExempleDUtilisation {
 
         monBandeau.setForeground(Color.BLACK);
         monBandeau.sleep(1000);
+        monBandeau.setMessage("On tourne");
+        monBandeau.sleep(1000);
         Rotation R1 = new Rotation(75);
         Rotation R2 = new Rotation(-75);
         ChangerCouleur Ccou = new ChangerCouleur();

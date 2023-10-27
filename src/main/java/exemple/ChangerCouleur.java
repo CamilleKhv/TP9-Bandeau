@@ -11,14 +11,10 @@ public class ChangerCouleur extends Effet{
     public void executer(Bandeau Bd)
     {
             Bd.setMessage("On change de couleur");
-
-            Bd.setForeground(Color.yellow);
-            Bd.sleep(600);
-            Bd.setForeground(Color.red);
-            Bd.sleep(600);
-            Bd.setForeground(Color.green);
-            Bd.sleep(600);
-            Bd.setForeground(Color.pink);
-            Bd.sleep(600);
+            for(int i = 0;i<255;i+=15) {
+                Bd.setForeground(new Color(i,150,230));
+                Bd.sleep(200);
+            }
+        Bd.sleep(1000);
     }
 }
