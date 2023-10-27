@@ -3,7 +3,7 @@ package exemple;
 import bandeau.Bandeau;
 
 import java.awt.Color;
-import java.awt.Font;
+import java.util.ArrayList;
 
 public class ExempleDUtilisation {
 
@@ -13,49 +13,33 @@ public class ExempleDUtilisation {
 
     public void exemple() {
         Bandeau monBandeau = new Bandeau();
-        Font font = monBandeau.getFont();
-        Color back = monBandeau.getBackground();
-        Color fore = monBandeau.getForeground();
-
-        monBandeau.setMessage("Hello");
+        monBandeau.setMessage("Hello World");
         monBandeau.sleep(1000);
-        monBandeau.setMessage("On va changer de police");
+        monBandeau.setBackground(Color.WHITE);
+        monBandeau.setForeground(Color.ORANGE);
         monBandeau.sleep(1000);
-        monBandeau.setMessage("Monospaced 15 Bold");
-        monBandeau.setFont(new Font("Monospaced", Font.BOLD, 15));
-        monBandeau.sleep(1000);
-        monBandeau.setMessage("SansSerif 15");
-        monBandeau.setFont(new Font("SansSerif", Font.PLAIN, 15));
-        monBandeau.sleep(1000);
-        monBandeau.setMessage("On va zoomer");
-        monBandeau.sleep(1000);
-        monBandeau.setMessage("Zoom........");
-        for (int i = 5; i < 60; i += 5) {
-            monBandeau.setFont(new Font("Dialog", Font.BOLD, 5 + i));
-            monBandeau.sleep(100);
-        }
+        monBandeau.setForeground(Color.GREEN);
         monBandeau.sleep(1000);
 
-        monBandeau.setFont(new Font("Courier new", Font.PLAIN, 15));
-        monBandeau.setMessage("On va tourner");
-        monBandeau.sleep(1000);
-        monBandeau.setMessage("On tourne de 45°...");
-        monBandeau.setRotation(Math.PI / 2.0f);
-        monBandeau.sleep(1000);
-        monBandeau.setRotation(0.0f);
+        ArrayList<Effet> Scen = new ArrayList<Effet>();
 
-        monBandeau.setMessage("On va changer de couleur de fond");
+        monBandeau.setForeground(Color.BLACK);
         monBandeau.sleep(1000);
-        monBandeau.setBackground(Color.DARK_GRAY);
-        monBandeau.setMessage("On va changer de couleur");
-        monBandeau.sleep(1000);
-        monBandeau.setForeground(Color.YELLOW);
-        monBandeau.sleep(1000);
-        monBandeau.setFont(font);
-        monBandeau.setForeground(fore);
-        monBandeau.setBackground(back);
-        monBandeau.setMessage("Terminé");
-        monBandeau.sleep(3000);
+        Rotation R1 = new Rotation(75);
+        Rotation R2 = new Rotation(-75);
+        ChangerCouleur Ccou = new ChangerCouleur();
+        Clignote Cli = new Clignote();
+
+        Scenario S= new Scenario ("Scenario 1", Scen);
+        S.AjouteAuScenario(R1,16);
+        S.AjouteAuScenario(R2,16);
+        S.AjouteAuScenario(Ccou,1);
+        S.AjouteAuScenario(Cli,4);
+
+        S.executerScenario(monBandeau);
+        monBandeau.setForeground(Color.BLACK);
+        monBandeau.setMessage("C'est fini!");
+        monBandeau.sleep(2000);
         monBandeau.close();
     }
 }
